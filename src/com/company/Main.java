@@ -87,7 +87,7 @@ public class Main {
                                     out.println(" - card found with price: "+item.attr("data-price"));
                                     float price = Float.parseFloat(price_str);
                                     if(price <= msrp[i]){
-                                        out.print("MATCH FOUND!");
+                                        out.println("MATCH FOUND!");
                                         no_match = false;
                                         String item_url = item.child(0).child(0).attr("href");
                                         if(!item_url.isEmpty()){
