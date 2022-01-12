@@ -43,13 +43,13 @@ public class Main {
 
         //Check this type:  3060, 3070, 3070ti, 3080, 3080ti, 3090
         String[] name =   {"3060",   "3070",   "3070ti",   "3080",   "3080ti",   "3090"};
-        Boolean[] check = {true,     true,     true,       true,     true,       true };
+        Boolean[] check = {false,    false,    false,      false,    false,      false };
         float[] msrp =    {330,      520,      620,        720,      1200,       1550 };                //float[] msrp =    {330,      520,      620,        720,      1200,       1550 };
         String[] url =    {url_3060, url_3070, url_3070ti, url_3080, url_3080ti, url_3090};
         float msrp_threshold = 20;
 
         if(args.length > 0){
-            Arrays.fill(check, false);
+
             for (int i = 0; i < args.length; i++) {
 
                 System.out.println("Argument " + i + ": " + args[i]);
@@ -74,6 +74,15 @@ public class Main {
             }
         }
 
+        //Check if for particular card is checked - if not: check all
+        boolean filter = false;
+        if(Arrays.asList(check).contains(true)){
+            filter = true;
+        }
+
+        if(!filter){
+            Arrays.fill(check,true);
+        }
 
 
         playSound();
