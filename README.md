@@ -12,7 +12,7 @@ __Quickstart:__
 1. Öffne die Befehlszeile (cmd) im selben Ordner der _nbbot.jar_
     - Unter Windows: Shift+Rechtsklick -> "PowerShell-Fenster hier öffnen.
     <img src="img_powershell.jpg" width="600" height="350">
-1. Gibt den Befehl `java -jar nbbot.jar` ein gefolgt von der Karte, die du im Auge hast. `-3060` `-3070` `-3070ti` `-3080` `-3080ti` `-3090`. Drücke Enter.
+1. Gib den Befehl `java -jar nbbot.jar` ein gefolgt von der Karte, die du im Auge hast. `-3060` `-3070` `-3070ti` `-3080` `-3080ti` `-3090`. Drücke Enter.
     - z.B `java -jar nbbot.jar -3060`  
 1. Fertig! Im Fenster werden nun alle Informationen angezeigt.
     <img src="img_app.jpg" width="600" height="350">  
