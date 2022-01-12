@@ -6,7 +6,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -41,7 +45,8 @@ public class Main {
         String[] name =   {"3060",   "3070",   "3070ti",   "3080",   "3080ti",   "3090"};
         Boolean[] check = {true,     true,     true,       true,     true,       true };
         float[] msrp =    {330,      520,      620,        720,      1200,       1550 };                //float[] msrp =    {330,      520,      620,        720,      1200,       1550 };
-
+        String[] url =    {url_3060, url_3070, url_3070ti, url_3080, url_3080ti, url_3090};
+        float msrp_threshold = 20;
 
         if(args.length > 0){
             Arrays.fill(check, false);
@@ -59,10 +64,19 @@ public class Main {
                     out.println("using no-login urls");
                     nologin = true;
                 }
+
+                if(args[i].contains("-threshold=")){
+                    String threshold_str = args[i].substring("-threshold=".length());
+                    out.println("");
+                    out.println("using threshold "+threshold_str+" EUR");
+                    msrp_threshold = Float.parseFloat(threshold_str);
+                }
             }
         }
 
-        String[] url =    {url_3060, url_3070, url_3070ti, url_3080, url_3080ti, url_3090};
+
+
+        playSound();
 
 
         Document doc = null;
@@ -78,7 +92,7 @@ public class Main {
                     if(check[i])
                     {
                         try {
-                            out.println("Checking price for "+name[i]+" with msrp lower or equal to "+msrp[i]+" EUR.");
+                            out.println("Checking price for "+name[i]+" with msrp lower or equal to "+(msrp[i]+msrp_threshold)+" EUR.");
                             doc = Jsoup.connect(url[i]).get();
                             Elements items = doc.select(".js-listing-item-GTM");
                             for (Element item : items) {
@@ -86,7 +100,7 @@ public class Main {
                                 if(!price_str.isEmpty()){
                                     out.println(" - card found with price: "+item.attr("data-price"));
                                     float price = Float.parseFloat(price_str);
-                                    if(price <= msrp[i]){
+                                    if(price <= msrp[i]+msrp_threshold){
                                         out.println("MATCH FOUND!");
                                         no_match = false;
                                         String item_url = item.child(0).child(0).attr("href");
@@ -133,6 +147,11 @@ public class Main {
                     out.println("");
                     out.println("App is inactive. Please close and restart the app to check for prices again.");
                     out.println("");
+
+                    for(int i = 0 ; i < 5 ; i++){
+                        playSound();
+                        Thread.sleep( 1500);
+                    }
                 }
             }
         } catch (InterruptedException e) {
@@ -140,5 +159,23 @@ public class Main {
             e.printStackTrace();
         }
 
+    }
+
+    public static void playSound() {
+        try {
+
+
+            //File file = new File(Main.class.getResource("notification.wav").getFile());
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(Main.class.getResource("notification.wav"));
+
+            //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("notification.wav")); //working if .wav is in root folder (nbbot)
+
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error playing sound.");
+            ex.printStackTrace();
+        }
     }
 }
