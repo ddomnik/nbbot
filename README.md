@@ -9,11 +9,14 @@ Es lohnt sich deshalb, die App nebenher laufen zu lassen.
 
 __Quickstart:__
 1. Lade die [_nbbot.jar_](nbbot_jar/nbbot.jar) Datei im Ordner _nbbot_jar_ herunter und speichere sie an gewünschtem Ort.
-1. Öffne die Befehlszeile (cmd) im selben Ordner der _nbbot.jar_
+1. Öffne die Befehlszeile (cmd) im selben Ordner der _nbbot.jar_. Alternativ kann mit einem Doppelklick auf _nbbot.jar_ die Anwendung im Hintergrund gestartet werden.
     - Unter Windows: Shift+Rechtsklick -> "PowerShell-Fenster hier öffnen.
     <img src="img_powershell.jpg" width="600" height="350">
-1. Gib den Befehl `java -jar nbbot.jar` ein gefolgt von der Karte, die du im Auge hast. `-3060` `-3070` `-3070ti` `-3080` `-3080ti` `-3090`. Drücke Enter.
-    - z.B `java -jar nbbot.jar -3060`  
+1. Gib den Befehl `java -jar nbbot.jar` ein um das Programm zu starten. Es ertönt ein akustisches Signal. 
+    - Spezielle Karten können mit `-3060` `-3070` `-3070ti` `-3080` `-3080ti` `-3090` beobachtet werden.
+        - z.B `java -jar nbbot.jar -3060`  
+    - Es ist ein Standard Schwellwert von 20 EUR eingestellt. Über `-threshold=WERT` kann ein beliebiger Wert eingestellt werden.
+        - z.B `java -jar nbbot.jar -3060 -3070ti -threshold=50` für 50 EUR über UVP  
 1. Fertig! Im Fenster werden nun alle Informationen angezeigt.
     <img src="img_app.jpg" width="600" height="350">  
 1. Sobald eine Karte zum UVP gefunden wurde, wird automatisch die Seite der Karte geöffnet mit Login Popup.
