@@ -8,7 +8,7 @@ Die App prüft im Minutentakt die Webseite von _notebooksbilliger.de_ nach Grafi
 Es lohnt sich deshalb, die App nebenher laufen zu lassen.
 
 __Quickstart:__
-1. Lade die [_nbbot.jar_](_nbbot_jar/nbbot.jar) Datei herunter und speichere sie an gewünschtem Ort.
+1. Lade die [_nbbot.jar_](blob/main/_nbbot_jar/nbbot.jarr) Datei herunter und speichere sie an gewünschtem Ort.
 1. Öffne die Befehlszeile (cmd) im selben Ordner der _nbbot.jar_
     - Unter Windows: Shift+Rechtsklick -> "PowerShell-Fenster hier öffnen.
     <img src="img_powershell.jpg" width="600" height="350">
