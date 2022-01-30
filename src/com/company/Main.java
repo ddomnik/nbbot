@@ -25,6 +25,7 @@ public class Main {
         boolean nologin = false;
 
         String url_3060   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/page/1?box_8308_2816%5B%5D=15614038&sort=price&order=asc&availability=alle";
+        String url_3060ti = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/page/1?box_8308_2816%5B%5D=15613592&sort=price&order=asc&availability=alle";
         String url_3070   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/page/1?box_8308_2816%5B%5D=15613065&sort=price&order=asc&availability=alle";
         String url_3070ti = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/page/1?box_8308_2816%5B%5D=15614913&sort=price&order=asc&availability=alle";
         String url_3080   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/page/1?box_8308_2816%5B%5D=15613064&sort=price&order=asc&availability=alle";
@@ -33,18 +34,19 @@ public class Main {
 
         /* Product pages with login popup
         String url_3060   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15614038/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
-        String url_3070   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15614913/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
+        String url_3060ti = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15613592/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
+        String url_3070   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15613065/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
         String url_3070ti = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15614913/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
         String url_3080   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15613064/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
         String url_3080ti = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15614857/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
         String url_3090   = "https://www.notebooksbilliger.de/pc+hardware/grafikkarten/action/login/box_8308_2816%255B0%255D/15613063/sort/price/order/asc/availability/alle/categories_id/2816/page/1";
          */
 
-        //Check this type:  3060, 3070, 3070ti, 3080, 3080ti, 3090
-        String[] name =   {"3060",   "3070",   "3070ti",   "3080",   "3080ti",   "3090"};
-        Boolean[] check = {false,    false,    false,      false,    false,      false };
-        float[] msrp =    {330,      520,      620,        720,      1200,       1550 };                //float[] msrp =    {330,      520,      620,        720,      1200,       1550 };
-        String[] url =    {url_3060, url_3070, url_3070ti, url_3080, url_3080ti, url_3090};
+        //Check this type:  3060, 3060ti, 3070, 3070ti, 3080, 3080ti, 3090
+        String[] name =   {"3060",   "3060ti",   "3070",   "3070ti",   "3080",   "3080ti",   "3090"};
+        Boolean[] check = {false,    false,      false,    false,      false,    false,      false };
+        float[] msrp =    {330,      400,        520,      620,        720,      1200,       1550 };                //float[] msrp =    {330,      520,      620,        720,      1200,       1550 };
+        String[] url =    {url_3060, url_3060,   url_3070, url_3070ti, url_3080, url_3080ti, url_3090};
         float msrp_threshold = 20;
 
         if(args.length > 0){
