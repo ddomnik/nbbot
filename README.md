@@ -69,7 +69,7 @@ __Telegram Benachrichtigung:__
   
 
       
-TIPPs:__
+__TIPPs:__
 Einen Account im vorhinein anlegen und Kredikarteninformationen hinterlegen! Grafikkarten sind nur per Kreditkarte oder Amazon Pay erhältlich.
     
 
