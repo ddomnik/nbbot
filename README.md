@@ -14,7 +14,7 @@ __Quickstart:__
     <img src="img_powershell.jpg" width="600" height="350">
 1. Gib den Befehl `java -jar nbbot.jar` ein um das Programm zu starten. Es ertönt ein akustisches Signal. 
 1. Fertig! Im Fenster werden nun alle Informationen angezeigt.
-    <img src="img_app.jpg" width="600" height="350">  
+    <img src="img_app.jpg" width="600" height="450">  
 1. Sobald eine Karte zum UVP gefunden wurde, wird automatisch die Seite der Karte geöffnet mit Login Popup.
     <img src="img_nbb.jpg" width="600" height="400">  
     
@@ -69,8 +69,8 @@ __Telegram Benachrichtigung:__
   
 
       
-1. TIPPs:
-    Einen Account im vorhinein anlegen und Kredikarteninformationen hinterlegen! Grafikkarten sind nur per Kreditkarte oder Amazon Pay erhältlich.
+TIPPs:__
+Einen Account im vorhinein anlegen und Kredikarteninformationen hinterlegen! Grafikkarten sind nur per Kreditkarte oder Amazon Pay erhältlich.
     
 
 __DISCLAIMER:__
