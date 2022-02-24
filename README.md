@@ -8,41 +8,70 @@ Die App prüft im Minutentakt die Webseite von _notebooksbilliger.de_ nach Grafi
 Es lohnt sich deshalb, die App nebenher laufen zu lassen.
 
 __Quickstart:__
-1. Lade die [_nbbot.jar_](nbbot_jar/nbbot.jar) Datei im Ordner _nbbot_jar_ herunter und speichere sie an gewünschtem Ort.
+1. Lade die [_nbbot.jar_](nbbot_jar/) und [_settings.ini_](nbbot_jar/) Datei im Ordner _nbbot_jar_ herunter und speichere sie an gewünschtem Ort.
 1. Öffne die Befehlszeile (cmd) im selben Ordner der _nbbot.jar_. Alternativ kann mit einem Doppelklick auf _nbbot.jar_ die Anwendung im Hintergrund gestartet werden.
     - Unter Windows: Shift+Rechtsklick -> "PowerShell-Fenster hier öffnen.
     <img src="img_powershell.jpg" width="600" height="350">
 1. Gib den Befehl `java -jar nbbot.jar` ein um das Programm zu starten. Es ertönt ein akustisches Signal. 
-    - Spezielle Karten können mit `-3060` `-3070` `-3070ti` `-3080` `-3080ti` `-3090` beobachtet werden.
-        - z.B `java -jar nbbot.jar -3060`  
-    - Es ist ein Standard Schwellwert von 20 EUR eingestellt. Über `-threshold=WERT` kann ein beliebiger Wert eingestellt werden.
-        - z.B `java -jar nbbot.jar -3060 -3070ti -threshold=50` für 50 EUR über UVP  
 1. Fertig! Im Fenster werden nun alle Informationen angezeigt.
     <img src="img_app.jpg" width="600" height="350">  
 1. Sobald eine Karte zum UVP gefunden wurde, wird automatisch die Seite der Karte geöffnet mit Login Popup.
     <img src="img_nbb.jpg" width="600" height="400">  
     
-1. Die UVP pro Karte sind folgende:  
-     3060,    3070,    3070ti,    3080,    3080ti,    3090  
-      330€,     520€,       620€,     720€,      1200€,    1550€ 
+1. Einstellungen können in der _settings.ini_ vorgenommen werden. Die Datei kann mit einem standard Texteditor geöffnet werden.
+    - unter [check] kann mit einem Boolean (true/false) ausgewählt werden, welche Karten überprüft werden sollen.
+
+
+__Telegram Benachrichtigung:__
+
+- Erstelle einen Telegram Bot, indem du die Telegram App öffnest (zum Aufsetzen wird die Webapp empfohlen, da so leichter die Werte kopiert werden können)
+- Gib im Suchfeld `@BotFather` ein und starte den Chat
+- Erstelle einen Bot indem du im Chat `/newbot` eingibst
+- Gib dem Bot einen beliebigen Namen. Z.B. `RTX Bot`
+- Danach kannst du dem Bot einen beliebigen Usernamen geben. Dieser muss mit `_bot` enden. Z.B. `rtx_bot`
+- Nun solltest du eine Nachricht mit einem Link zum Bot (z.B. t.me/rtx_bot) und einen Token bekommen haben. Der Token sieht z.B. so aus: `1234567890:AAkfuwefkdhjesfrsdgo_rzehsefo43ef33`
+- Klicke auf den Link zu deinem Bot und starte ihn.
+- Schicke eine beliebige Nachricht.
+- Öffne nun im Browser folgende URL: `https://api.telegram.org/botTOKEN/getUpdates`, wobei TOKEN durch deinen Token ersetzt werden muss. Die Seite sollte nun etwa folgender Inhalt zeigen:
+  
+```
+{
+   "ok":true,
+   "result":[
+      {
+         "update_id":11111111,
+         "message":{
+            "message_id":1,
+            "from":{
+               "id":9999999999,
+               "is_bot":false,
+               "first_name":"WHATEVER",
+               "username":"WHATEVER",
+               "language_code":"en"
+            },
+            "chat":{
+               "id":9999999999,
+               "first_name":"WHATEVER",
+               "username":"WHATEVER",
+               "type":"private"
+            },
+            "date":1645717481,
+            "text":"Test"
+         }
+      }
+   ]
+}
+```
+
+- Setze nun in der _settings.ini_ unter [general] den Wert _use_telegram_ = true 
+- Unter [telegram] muss der _token_ und die _chat_id_ gesetzt werden.
+- _token_ ist der Token aus der Telegram Nachricht (`1234567890:AAkfuwefkdhjesfrsdgo_rzehsefo43ef33`). Die _chat_id_ ist der Wert unter chat -> id (`9999999999`)
+  
+
       
 1. TIPPs:
     Einen Account im vorhinein anlegen und Kredikarteninformationen hinterlegen! Grafikkarten sind nur per Kreditkarte oder Amazon Pay erhältlich.
     
-__Installation:__
-1. Lade die [_nbbot.jar_](_nbbot_jar/nbbot.jar) Datei herunter und speichere sie an gewünschtem Ort.
-1. Öffne die Befehlszeile (cmd) im selben Ordner der _nbbot.jar_
-    - Unter Windows: Shift+Rechtsklick -> "PowerShell-Fenster hier öffnen.
-1. Gibt den Befehl `java -jar nbbot.jar` ein und drücke Enter.
-1. Fertig! Im Fenster werden nun alle Informationen angezeigt.
-
-__Erweiterte Benutzung:__ 
-- Die App sucht im Standardmodus alle Grafikkarten (3060, 3070, 3070ti, 3080, 3080ti, 3090).  
-  Über die Startparameter kann speziell nach einer Reihe gesucht werden.  
-Will beispielsweise nur nach 3060 und 3070ti gesucht werden, so starte die App mit folgendem Befehl:  
-`java -jar nbbot.jar -3060 -3070ti`
-- Im Standardmodus wird zusätzlich bei einer gefundenen Karte die Webseite inkl. Login-Popup angezeigt, um sich schneller einloggen zu können.  
-  Ist dies nicht gewollt, so ergänze den Befehl mit `-nologin`
 
 __DISCLAIMER:__
 Das Projekt steht weder mit _NVIDIA_, noch mit _notebooksbilliger.de_ in Verbindung! Jegliche Benutzung der App ist auf eigenem Risiko abzuwägen. Es wird keine Haftung übernommen! 
