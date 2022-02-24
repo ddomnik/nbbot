@@ -146,6 +146,7 @@ public class Main {
                                 JSONObject itemJSON = items.getJSONObject(i);
 
                                 String str_url = itemJSON.getString("product_url");
+                                str_url +="/action/login";
                                 String str_name = itemJSON.getString("fe_sku");
                                 out.print("    - "+str_name+" ");
 
@@ -153,7 +154,7 @@ public class Main {
                                     out.println("");
                                     if(itemJSON.getString("is_active").equals("true")) {
                                         //We have an active buy link
-                                        out.println(itemJSON.toString());
+                                        out.println("      "+itemJSON.toString());
                                         webpage_open(str_url);
                                         //Check if telegram is set up
                                         if (ini_settings.containsKey("general")) {
@@ -208,6 +209,7 @@ public class Main {
                             JSONObject itemJSON = items.getJSONObject(i);
 
                             String str_url = itemJSON.getJSONArray("retailers").getJSONObject(0).getString("purchaseLink");
+                            str_url +="/action/login";
                             String str_name = itemJSON.getString("productSKU");
                             out.print("    - "+str_name+" ");
 
@@ -215,7 +217,7 @@ public class Main {
                                 out.println("");
                                 if(itemJSON.getBoolean("productAvailable")) {
                                     //We have an active buy link
-                                    out.println(itemJSON.toString());
+                                    out.println("      "+itemJSON.toString());
                                     webpage_open(str_url);
                                     //Check if telegram is set up
                                     if (ini_settings.containsKey("general")) {
