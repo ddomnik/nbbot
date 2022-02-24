@@ -4,6 +4,8 @@
     <root id="archive" name="nbbot.jar">
       <element id="module-output" name="nbbot" />
       <element id="extracted-dir" path="$PROJECT_DIR$/jsoup-1.14.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/json-20200518.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/ini4j-0.5.4.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
