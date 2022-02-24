@@ -140,17 +140,17 @@ public class Main {
                         if(resultJSON.getBoolean("success")){
 
                             JSONArray items = resultJSON.getJSONArray("listMap");
-                            out.print("    found "+items.length()+" items (");
+                            out.println("    found "+items.length()+" items:");
                             for(int i = 0 ; i < items.length() ; i ++){
 
                                 JSONObject itemJSON = items.getJSONObject(i);
 
                                 String str_url = itemJSON.getString("product_url");
                                 String str_name = itemJSON.getString("fe_sku");
-                                out.print(" "+str_name+" ");
+                                out.print("    - "+str_name+" ");
 
                                 if(nvidia_product_names.stream().anyMatch(str_name::contains)) {
-                                    out.print("✓ "); //The item is in our checked list
+                                    out.println("");
                                     if(itemJSON.getString("is_active").equals("true")) {
                                         //We have an active buy link
                                         out.println(itemJSON.toString());
@@ -173,10 +173,10 @@ public class Main {
                                         match = true;
                                     }
                                 }else{
-                                    out.print("✗ "); //The item is not in our checked list
+                                    out.println("(not in checked)"); //The item is not in our checked list
                                 }
                             }
-                            out.println(")");
+                            out.println("");
                         }else{
                             out.println("Result was not defined as success");
                         }
@@ -201,7 +201,7 @@ public class Main {
                         JSONArray  items = searchedJSON.getJSONArray("productDetails");
 
                         items.put(prod_featuredJSON);
-                        out.print("    found "+items.length()+" items (");
+                        out.println("    found "+items.length()+" items:");
 
                         for(int i = 0 ; i < items.length() ; i ++){
 
@@ -209,10 +209,10 @@ public class Main {
 
                             String str_url = itemJSON.getJSONArray("retailers").getJSONObject(0).getString("purchaseLink");
                             String str_name = itemJSON.getString("productSKU");
-                            out.print(" "+str_name+" ");
+                            out.print("    - "+str_name+" ");
 
                             if(nvidia_product_names.stream().anyMatch(str_name::contains)) {
-                                out.print("✓ "); //The item is in our checked list
+                                out.println("");
                                 if(itemJSON.getBoolean("productAvailable")) {
                                     //We have an active buy link
                                     out.println(itemJSON.toString());
@@ -235,10 +235,10 @@ public class Main {
                                     match = true;
                                 }
                             }else{
-                                out.print("✗ "); //The item is not in our checked list
+                                out.println("(not in checked)"); //The item is not in our checked list
                             }
                         }
-                        out.println(")");
+                        out.println("");
                     } catch (IOException e) {
                         out.println("Connection error.");
                         e.printStackTrace();
@@ -252,7 +252,6 @@ public class Main {
         }
 
         if(!match){
-            out.println("");
             out.println("  ... no active buy link found.");
         }
 
