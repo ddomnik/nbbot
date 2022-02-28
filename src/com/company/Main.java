@@ -44,6 +44,21 @@ public class Main {
 
             //Play startup sound
             playSound();
+            
+            //Send initial telegram message
+            if (ini_settings.containsKey("general")) {
+                if (ini_settings.get("general", "use_telegram", boolean.class)) {
+                    if (ini_settings.containsKey("telegram")) {
+                        String token = ini_settings.get("telegram", "token", String.class);
+                        String chat_id = ini_settings.get("telegram", "chat_id", String.class);
+                        if (!token.equals("null") && !chat_id.equals("null")) {
+                            telegram_notify(token, chat_id, "Bot started and will notify you");
+                        } else {
+                            out.println("Error: Telegram parameters are not set up.");
+                        }
+                    }
+                }
+            }
 
             while (no_match) {
                 out.println("");
